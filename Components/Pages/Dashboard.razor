@@ -1,0 +1,335 @@
+﻿@page "/"
+@using CourseworkAD.Model
+@using CourseworkAD.Models
+@using CourseworkAD.Services
+@inject TransactionService TransactionService
+
+<div class="dashboard">
+    <h2 class="text-center my-4">QuickCash Dashboard</h2>
+
+    <!-- Summary Section -->
+    <div class="summary-section d-flex justify-content-around mb-4">
+        <div class="summary-card">
+            <h5>Total Inflows</h5>
+            <p class="amount text-primary">@TotalInflows.ToString("C")</p>
+        </div>
+        <div class="summary-card">
+            <h5>Total Outflows</h5>
+            <p class="amount text-danger">@TotalOutflows.ToString("C")</p>
+        </div>
+        <div class="summary-card">
+            <h5>Pending Debts</h5>
+            <p class="amount text-warning">@PendingDebts.ToString("C")</p>
+        </div>
+        <div class="summary-card">
+            <h5>Remaining Balance</h5>
+            <p class="amount text-success">@RemainingBalance.ToString("C")</p>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="row stats-section">
+
+        <div class="col-md-6">
+            <h4>Transactions Summary</h4>
+            <table class="table table-bordered">
+                <tr><th>Total Transactions</th><td>@TotalTransactions</td></tr>
+                <tr><th>Net Transaction Value</th><td>@TotalTransactionValue.ToString("C")</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section py-4">
+        <h4>Filter Transactions</h4>
+        <div class="d-flex flex-wrap gap-3">
+            <input type="date" @bind="SelectedFromDate" class="form-control" placeholder="From Date">
+            <input type="date" @bind="SelectedToDate" class="form-control" placeholder="To Date">
+            <input type="text" @bind="SelectedTag" class="form-control" placeholder="Search by Tag">
+            <select @bind="SelectedType" class="form-control">
+                <option value="">All Types</option>
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+                <option value="Debt">Debt</option>
+            </select>
+        </div>
+        <button class="btn btn-success mt-3" @onclick="ApplyFilter">Apply Filters</button>
+    </div>
+
+    <!-- Pending Debts Section -->
+    <div class="pending-debts-section py-4">
+        <h4>Pending Debts</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (PendingDebtTransactions.Any())
+                {
+                    foreach (var debt in PendingDebtTransactions)
+                    {
+                        <tr>
+                            <td>@debt.Title</td>
+                            <td>@debt.Date.ToShortDateString()</td>
+                            <td>@debt.Amount.ToString("C")</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">No pending debts.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Transaction History Section -->
+    <div class="transaction-history-section py-4">
+        <h4>Transaction History</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Transactions)
+                {
+                    <tr>
+                        <td>@transaction.Title</td>
+                        <td>@transaction.Type</td>
+                        <td>@transaction.Date.ToShortDateString()</td>
+                        <td>@transaction.Amount.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <h4>Statistics</h4>
+    <table class="table table-bordered">
+        <tr><th>HighestCash Inflow</th><td>@HighestInflow.ToString("C")</td></tr>
+        <tr><th>LowestCash Inflow</th><td>@LowestInflow.ToString("C")</td></tr>
+        <tr><th>HighestCash Outflow</th><td>@HighestOutflow.ToString("C")</td></tr>
+        <tr><th>LowestCash Outflow</th><td>@LowestOutflow.ToString("C")</td></tr>
+        <tr><th>HighestCash Debt</th><td>@HighestDebt.ToString("C")</td></tr>
+        <tr><th>LowestCash Debt</th><td>@LowestDebt.ToString("C")</td></tr>
+    </table>
+</div>
+
+<style>
+    .dashboard {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .summary-section {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .summary-card {
+        flex: 1;
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        border: 1px solid #dee2e6;
+        padding: 20px;
+        text-align: center;
+        border-radius: 12px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card h5 {
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            color: #343a40;
+        }
+
+    .amount {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #495057;
+    }
+
+    .filter-section, .pending-debts-section, .transaction-history-section {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .filter-section h4, .pending-debts-section h4, .transaction-history-section h4 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #212529;
+        }
+
+        .filter-section .form-control {
+            max-width: 300px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+        }
+
+        .filter-section .btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 10px 20px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+            .filter-section .btn:hover {
+                background-color: #218838;
+            }
+
+    .table {
+        width: 100%;
+        background: #ffffff;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+        .table th, .table td {
+            padding: 15px;
+            border: none;
+            background: #ffffff;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .table th {
+            text-align: left;
+            font-weight: bold;
+            color: #212529;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f8f9fa;
+    }
+
+    .table-striped tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .table thead tr {
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .transaction-history-section .table, .pending-debts-section .table {
+        font-size: 1em;
+    }
+
+</style>
+
+@code {
+    private decimal TotalInflows;
+    private decimal TotalOutflows;
+    private decimal PendingDebts;
+    private decimal RemainingBalance;
+    private List<CourseworkAD.Model.Transaction> Transactions = new();
+    private List<CourseworkAD.Model.Transaction> PendingDebtTransactions = new();
+
+    private decimal HighestInflow;
+    private decimal LowestInflow;
+    private decimal HighestOutflow;
+    private decimal LowestOutflow;
+    private decimal HighestDebt;
+    private decimal LowestDebt;
+
+    private DateTime? SelectedFromDate;
+    private DateTime? SelectedToDate;
+    private string SelectedTag;
+    private string SelectedType;
+
+
+
+    private int TotalTransactions;
+    private decimal TotalTransactionValue;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDashboardData();
+    }
+
+    private async Task LoadDashboardData()
+    {
+        var allTransactions = TransactionService.GetTransactions().ToList();
+
+        TotalInflows = allTransactions.Where(t => t.Type == "Credit").Sum(t => t.Amount);
+        TotalOutflows = allTransactions.Where(t => t.Type == "Debit").Sum(t => t.Amount);
+        PendingDebts = allTransactions.Where(t => t.Type == "Debt" && !t.IsDebtCleared).Sum(t => t.Amount);
+        RemainingBalance = TotalInflows - TotalOutflows;
+
+        Transactions = allTransactions.OrderByDescending(t => t.Date).Take(5).ToList();
+        PendingDebtTransactions = allTransactions.Where(t => t.Type == "Debt" && !t.IsDebtCleared).ToList();
+
+        HighestInflow = allTransactions.Where(t => t.Type == "Credit").DefaultIfEmpty().Max(t => t?.Amount ?? 0);
+        LowestInflow = allTransactions.Where(t => t.Type == "Credit").DefaultIfEmpty().Min(t => t?.Amount ?? 0);
+        HighestOutflow = allTransactions.Where(t => t.Type == "Debit").DefaultIfEmpty().Max(t => t?.Amount ?? 0);
+        LowestOutflow = allTransactions.Where(t => t.Type == "Debit").DefaultIfEmpty().Min(t => t?.Amount ?? 0);
+        HighestDebt = allTransactions.Where(t => t.Type == "Debt").DefaultIfEmpty().Max(t => t?.Amount ?? 0);
+        LowestDebt = allTransactions.Where(t => t.Type == "Debt").DefaultIfEmpty().Min(t => t?.Amount ?? 0);
+
+        TotalTransactions = allTransactions.Count;
+        TotalTransactionValue = TotalInflows + PendingDebts - TotalOutflows;
+    }
+
+    private async Task ApplyFilter()
+    {
+        var allTransactions = TransactionService.GetTransactions().ToList();
+
+        if (SelectedFromDate.HasValue)
+        {
+            allTransactions = allTransactions.Where(t => t.Date >= SelectedFromDate.Value).ToList();
+        }
+
+        if (SelectedToDate.HasValue)
+        {
+            allTransactions = allTransactions.Where(t => t.Date <= SelectedToDate.Value).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(SelectedType))
+        {
+            allTransactions = allTransactions.Where(t => t.Type == SelectedType).ToList();
+        }
+
+        if (!string.IsNullOrEmpty(SelectedTag))
+        {
+            allTransactions = allTransactions.Where(t => t.Tags.Contains(SelectedTag, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        // Recalculate metrics with filtered data
+        TotalInflows = allTransactions.Where(t => t.Type == "Credit").Sum(t => t.Amount);
+        TotalOutflows = allTransactions.Where(t => t.Type == "Debit").Sum(t => t.Amount);
+        PendingDebts = allTransactions.Where(t => t.Type == "Debt" && !t.IsDebtCleared).Sum(t => t.Amount);
+        RemainingBalance = TotalInflows - TotalOutflows;
+
+        Transactions = allTransactions.OrderByDescending(t => t.Date).Take(5).ToList();
+        PendingDebtTransactions = allTransactions.Where(t => t.Type == "Debt" && !t.IsDebtCleared).ToList();
+
+        TotalTransactions = allTransactions.Count;
+        TotalTransactionValue = TotalInflows + PendingDebts - TotalOutflows;
+    }
+}

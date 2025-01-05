@@ -1,27 +1,121 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<!-- Top Navbar -->
+<div class="top-row ps-3 navbar navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">CourseworkAD</a>
+        <a class="navbar-brand fw-bold text-white" href="#">QuickCash</a>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<!-- Navigation Menu -->
+<input type="checkbox" title="Navigation menu" class="navbar-toggler bg-primary" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+<div class="nav-scrollable bg-light" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
+        <!-- Dashboard -->
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            <NavLink class="nav-link text-primary fw-semibold d-flex align-items-center" href="" Match="NavLinkMatch.All">
+                <i class="bi bi-house-door-fill me-2"></i> Dashboard
             </NavLink>
         </div>
+        <!-- Add Transactions -->
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            <NavLink class="nav-link text-primary fw-semibold d-flex align-items-center" href="counter">
+                <i class="bi bi-plus-square-fill me-2"></i> Add Transactions
             </NavLink>
         </div>
+        <!-- Sort -->
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            <NavLink class="nav-link text-primary fw-semibold d-flex align-items-center" href="weather">
+                <i class="bi bi-list-nested me-2"></i> Sort
             </NavLink>
         </div>
     </nav>
 </div>
+
+<!-- Custom CSS -->
+<style>
+    /* Top Navbar */
+    .top-row {
+        background-color: #1a1a2e; /* Deep navy */
+        color: #eaeaea; /* Light gray text */
+        border-bottom: 2px solid #16213e; /* Slightly darker navy for border */
+        padding: 0.5rem 1rem;
+    }
+
+    /* Navbar Toggler */
+    .navbar-toggler {
+        border: none;
+        background-color: #16213e; /* Dark navy */
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        color: #eaeaea; /* Light text color */
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .navbar-toggler:hover {
+            transform: rotate(90deg); /* Rotate on hover */
+            background-color: #0f3460; /* Lighter navy */
+        }
+
+    /* Sidebar */
+    .nav-scrollable {
+        background-color: #1b262c; /* Dark gray background */
+        height: 100vh;
+        overflow-y: auto;
+        padding-top: 1rem;
+        border-right: 2px solid #0f3460; /* Lighter border */
+    }
+
+    /* Navigation Links */
+    .nav-link {
+        color: #eaeaea; /* Light text */
+        font-weight: 500; /* Semi-bold text */
+        padding: 0.75rem 1rem;
+        margin: 0.2rem 0;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+        .nav-link:hover {
+            background-color: #0f3460; /* Lighter navy on hover */
+            color: #f8f1f1; /* Almost white */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        .nav-link.active {
+            background-color: #e94560; /* Vibrant red for active link */
+            color: #ffffff; /* White text for contrast */
+        }
+
+    /* Icons */
+    .nav-item i {
+        font-size: 1.5rem; /* Larger icons */
+        margin-right: 0.8rem;
+        color: #eaeaea; /* Light text for icons */
+        transition: color 0.3s;
+    }
+
+        .nav-link:hover i {
+            color: #f8f1f1; /* Match icon color on hover */
+        }
+
+    /* Scrollbar for Sidebar */
+    .nav-scrollable::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .nav-scrollable::-webkit-scrollbar-thumb {
+        background-color: #0f3460; /* Navy scrollbar thumb */
+        border-radius: 4px;
+    }
+
+    .nav-scrollable::-webkit-scrollbar-thumb:hover {
+        background-color: #e94560; /* Red on hover */
+    }
+
+    .nav-scrollable::-webkit-scrollbar-track {
+        background-color: #1b262c; /* Match sidebar background */
+    }
+</style>

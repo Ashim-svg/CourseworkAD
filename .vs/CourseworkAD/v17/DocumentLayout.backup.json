@@ -3,8 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\pages\\sorttransactions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\pages\\sorttransactions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\pages\\transactions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\pages\\transactions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\services\\transactionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:services\\transactionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\models\\appdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:models\\appdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|c:\\users\\ashim\\onedrive\\desktop\\mui\\courseworkad\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{275DD3D8-47C7-4B21-9B3B-F7BED49B831B}|CourseworkAD.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +54,150 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "Components\\Pages\\Home.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Transactions.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Transactions.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Transactions.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Transactions.razor",
+              "RelativeToolTip": "Components\\Pages\\Transactions.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-16T03:02:08.709Z",
+              "WhenOpened": "2025-01-05T00:14:25.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAAAUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T23:07:23.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T23:26:40.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SortTransactions.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\SortTransactions.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SortTransactions.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\SortTransactions.razor",
+              "RelativeToolTip": "Components\\Pages\\SortTransactions.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T22:26:03.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\_Imports.razor",
+              "RelativeToolTip": "Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T22:29:50.627Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAIwG4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:28:24.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TransactionService.cs",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Services\\TransactionService.cs",
+              "RelativeDocumentMoniker": "Services\\TransactionService.cs",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Services\\TransactionService.cs",
+              "RelativeToolTip": "Services\\TransactionService.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAH4AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:28:13.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:27:29.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "Models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\Transaction.cs",
+              "RelativeToolTip": "Models\\Transaction.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAIwAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:27:04.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppData.cs",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\AppData.cs",
+              "RelativeDocumentMoniker": "Models\\AppData.cs",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Models\\AppData.cs",
+              "RelativeToolTip": "Models\\AppData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:26:44.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\ashim\\OneDrive\\Desktop\\MUI\\CourseworkAD\\Components\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "Components\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAANoAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-04T22:25:39.609Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
