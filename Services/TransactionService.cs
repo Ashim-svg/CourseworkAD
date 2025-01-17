@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CourseworkAD.Model;
-using CourseworkAD.Models;
+﻿using CourseworkAD.Model;
 
 namespace CourseworkAD.Services
 {
@@ -18,8 +14,16 @@ namespace CourseworkAD.Services
         // Add a new transaction and save it
         public string AddTransaction(Transaction transaction)
         {
+            if (_userService.CurrentUser == null)
+            {
+                return "Error: No user is logged in.";
+            }
+
+            // Associate the transaction with the logged-in user's username
+            transaction.Username = _userService.CurrentUser.Username;
+
             // Debugging: Output the transaction details
-            Console.WriteLine($"Adding Transaction: Type = {transaction.Type}, Amount = {transaction.Amount}");
+            Console.WriteLine($"Adding Transaction for {transaction.Username}: Type = {transaction.Type}, Amount = {transaction.Amount}");
 
             // If the transaction is a debit (outflow), check if balance is sufficient
             if (transaction.Type == "Debit")
@@ -31,13 +35,13 @@ namespace CourseworkAD.Services
                 }
             }
 
-            // If the transaction is a debt payment, clear the debt
+            // If the transaction is a credit (inflow), clear any pending debts
             if (transaction.Type == "Credit")
             {
                 ClearDebtFromInflows(transaction.Amount);
             }
 
-            // Proceed to add transaction
+            // Add the transaction to the user's data
             var appData = _userService.LoadData();
             appData.Transactions.Add(transaction);
             _userService.SaveData(appData);
@@ -45,32 +49,58 @@ namespace CourseworkAD.Services
             return "Transaction added successfully!";
         }
 
-        // Get all transactions
+        // Get all transactions for the currently logged-in user
         public IEnumerable<Transaction> GetTransactions()
         {
+            if (_userService.CurrentUser == null)
+            {
+                return Enumerable.Empty<Transaction>();
+            }
+
             var appData = _userService.LoadData();
-            return appData.Transactions;
+            return appData.Transactions.Where(t => t.Username == _userService.CurrentUser.Username);
         }
 
-        // Get transactions filtered by type
+        // Get transactions filtered by type for the currently logged-in user
         public IEnumerable<Transaction> GetTransactionsByType(string type)
         {
+            if (_userService.CurrentUser == null)
+            {
+                return Enumerable.Empty<Transaction>();
+            }
+
             var appData = _userService.LoadData();
-            return appData.Transactions.Where(t => t.Type.Equals(type, StringComparison.OrdinalIgnoreCase));
+            return appData.Transactions
+                .Where(t => t.Type.Equals(type, StringComparison.OrdinalIgnoreCase)
+                            && t.Username == _userService.CurrentUser.Username);
         }
 
-        // Get pending debts
+        // Get pending debts for the currently logged-in user
         public IEnumerable<Transaction> GetPendingDebts()
         {
+            if (_userService.CurrentUser == null)
+            {
+                return Enumerable.Empty<Transaction>();
+            }
+
             var appData = _userService.LoadData();
-            return appData.Transactions.Where(t => t.Type.Equals("Debt", StringComparison.OrdinalIgnoreCase) && !t.IsDebtCleared);
+            return appData.Transactions.Where(t => t.Type.Equals("Debt", StringComparison.OrdinalIgnoreCase)
+                                               && !t.IsDebtCleared
+                                               && t.Username == _userService.CurrentUser.Username);
         }
 
-        // Clear a debt
+        // Clear a specific debt for the currently logged-in user
         public bool ClearDebt(int transactionId, decimal paymentAmount)
         {
+            if (_userService.CurrentUser == null)
+            {
+                return false;
+            }
+
             var appData = _userService.LoadData();
-            var transaction = appData.Transactions.FirstOrDefault(t => t.Id == transactionId && t.Type == "Debt");
+            var transaction = appData.Transactions.FirstOrDefault(t => t.Id == transactionId
+                                                                       && t.Type == "Debt"
+                                                                       && t.Username == _userService.CurrentUser.Username);
 
             if (transaction == null || transaction.IsDebtCleared)
                 return false;
@@ -89,11 +119,20 @@ namespace CourseworkAD.Services
             return true;
         }
 
-        // Clear debt from inflows
+        // Clear debts automatically from inflows
         private void ClearDebtFromInflows(decimal inflowAmount)
         {
+            if (_userService.CurrentUser == null)
+            {
+                return;
+            }
+
             var appData = _userService.LoadData();
-            var pendingDebts = appData.Transactions.Where(t => t.Type == "Debt" && !t.IsDebtCleared).OrderBy(t => t.Date);
+            var pendingDebts = appData.Transactions
+                .Where(t => t.Type == "Debt"
+                            && !t.IsDebtCleared
+                            && t.Username == _userService.CurrentUser.Username)
+                .OrderBy(t => t.Date);
 
             foreach (var debt in pendingDebts)
             {
@@ -116,15 +155,24 @@ namespace CourseworkAD.Services
             _userService.SaveData(appData);
         }
 
-        // Method to get current balance
+        // Get the current balance for the logged-in user
         private decimal GetCurrentBalance()
         {
+            if (_userService.CurrentUser == null)
+            {
+                return 0;
+            }
+
             var appData = _userService.LoadData();
-            decimal totalInflows = appData.Transactions.Where(t => t.Type == "Credit").Sum(t => t.Amount);
-            decimal totalOutflows = appData.Transactions.Where(t => t.Type == "Debit").Sum(t => t.Amount);
+            decimal totalInflows = appData.Transactions
+                .Where(t => t.Type == "Credit" && t.Username == _userService.CurrentUser.Username)
+                .Sum(t => t.Amount);
+            decimal totalOutflows = appData.Transactions
+                .Where(t => t.Type == "Debit" && t.Username == _userService.CurrentUser.Username)
+                .Sum(t => t.Amount);
 
             decimal currentBalance = totalInflows - totalOutflows;
-            Console.WriteLine($"Calculated Current Balance: {currentBalance} (Inflows: {totalInflows}, Outflows: {totalOutflows})");
+            Console.WriteLine($"Calculated Current Balance for {_userService.CurrentUser.Username}: {currentBalance} (Inflows: {totalInflows}, Outflows: {totalOutflows})");
 
             return currentBalance;
         }

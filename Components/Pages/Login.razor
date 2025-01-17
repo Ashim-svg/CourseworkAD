@@ -1,0 +1,67 @@
+﻿@page "/"
+@using CourseworkAD.Models
+@inject NavigationManager NavigationManager
+@inject UserService UserService
+
+<div class="login-page-container d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="login-box bg-white shadow p-4 rounded">
+        <h3 class="text-center text-primary mb-4">Login</h3>
+
+        @if (!string.IsNullOrEmpty(AlertMessage))
+        {
+                <div class="alert @AlertClass" role="alert">
+                @AlertMessage
+                </div>
+        }
+
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <InputText id="username" class="form-control" @bind-Value="loginModel.Username" required />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <InputText id="password" type="password" class="form-control" @bind-Value="loginModel.Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </EditForm>
+        <p class="text-center mt-3">
+            Don't have an account? <a @onclick="NavigateToSignup" class="text-primary" style="cursor: pointer;">Signup here</a>
+        </p>
+    </div>
+</div>
+
+@code {
+    private User loginModel = new();
+    private string AlertMessage = string.Empty;
+    private string AlertClass = string.Empty;
+
+    private void HandleLogin()
+    {
+        var users = UserService.LoadUsers();
+        var user = users.FirstOrDefault(u => u.Username.Equals(loginModel.Username, StringComparison.OrdinalIgnoreCase));
+
+        if (user == null || !UserService.ValidatePassword(loginModel.Password, user.Password))
+        {
+            AlertMessage = "Invalid username or password.";
+            AlertClass = "alert-danger";
+            return;
+        }
+
+        UserService.LoginPage(user);
+        AlertMessage = "Login successful! Redirecting...";
+        AlertClass = "alert-success";
+
+        Task.Delay(2000).ContinueWith(_ =>
+        {
+            InvokeAsync(() => NavigationManager.NavigateTo("/dashboard"));
+        });
+    }
+
+    private void NavigateToSignup()
+    {
+        NavigationManager.NavigateTo("/signup");
+    }
+}
